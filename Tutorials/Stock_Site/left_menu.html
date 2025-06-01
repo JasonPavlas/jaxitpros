@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Basic styling for content sections for demonstration */
+        .content-section {
+            display: none; /* Hidden by default */
+            padding: 20px;
+        }
+        .content-section.active {
+            display: block; /* Shown when active */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <h1 class="text-xl font-semibold text-gray-700">My Website</h1>
+            <button id="mobileMenuButton" class="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex pt-16">
+        <aside id="sidebar" class="bg-gray-800 text-gray-100 w-64 min-h-screen p-4 space-y-2 fixed md:relative transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-40 shadow-lg">
+            <h2 class="text-lg font-semibold mb-4">Navigation</h2>
+            <nav>
+                <a href="#home" class="nav-link block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-white active-link">Home</a>
+                <a href="#about" class="nav-link block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-white">About</a>
+                <a href="#services" class="nav-link block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-white">Services</a>
+                <a href="#portfolio" class="nav-link block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-white">Portfolio</a>
+                <a href="#contact" class="nav-link block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-white">Contact</a>
+            </nav>
+            <div class="absolute bottom-4 left-4 right-4">
+                 <p class="text-xs text-gray-400">&copy; <span id="currentYear"></span> My Website</p>
+            </div>
+        </aside>
+
+        <main id="mainContent" class="flex-1 p-6 md:p-10 bg-gray-50 min-h-screen">
+            <section id="home" class="content-section active rounded-lg bg-white shadow p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Welcome to the Home Page</h2>
+                <p class="text-gray-600 leading-relaxed">This is the main content area. You can put any information you want here. Navigate through the sidebar to explore other sections. This section is currently active.</p>
+                <div class="mt-6">
+                    <img src="https://placehold.co/800x400/E2E8F0/4A5568?text=Placeholder+Image" alt="Placeholder Image" class="rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/969696?text=Image+Not+Found';">
+                </div>
+            </section>
+
+            <section id="about" class="content-section rounded-lg bg-white shadow p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">About Us</h2>
+                <p class="text-gray-600 leading-relaxed">We are a team of passionate developers creating awesome web experiences. Our mission is to deliver high-quality software that solves real-world problems. We believe in innovation, collaboration, and continuous learning.</p>
+                <p class="text-gray-600 leading-relaxed mt-4">Our values include integrity, customer satisfaction, and a commitment to excellence. We strive to build long-lasting relationships with our clients by understanding their needs and exceeding their expectations.</p>
+                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-indigo-100 p-4 rounded-lg shadow">
+                        <h3 class="font-semibold text-indigo-700">Our Mission</h3>
+                        <p class="text-sm text-indigo-600">To innovate and provide excellent solutions.</p>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-lg shadow">
+                        <h3 class="font-semibold text-green-700">Our Vision</h3>
+                        <p class="text-sm text-green-600">To be a leader in the tech industry.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" class="content-section rounded-lg bg-white shadow p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Our Services</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Web Development: Building responsive and modern websites.</li>
+                    <li>Mobile App Development: Creating native and cross-platform mobile applications.</li>
+                    <li>UI/UX Design: Designing intuitive and user-friendly interfaces.</li>
+                    <li>Cloud Solutions: Offering scalable and secure cloud infrastructure.</li>
+                    <li>Consulting: Providing expert advice to help your business grow.</li>
+                </ul>
+                <div class="mt-6">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-150">
+                        Learn More
+                    </button>
+                </div>
+            </section>
+
+            <section id="portfolio" class="content-section rounded-lg bg-white shadow p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Portfolio</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">Check out some of our recent projects. We take pride in our work and strive for excellence in every detail.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/A3BFFA/333333?text=Project+Alpha" alt="Project Alpha" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/969696?text=Image+Not+Found';">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-gray-800">Project Alpha</h3>
+                            <p class="text-sm text-gray-600 mt-1">A cutting-edge web application for data visualization.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/FBBF77/333333?text=Project+Beta" alt="Project Beta" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/969696?text=Image+Not+Found';">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-gray-800">Project Beta</h3>
+                            <p class="text-sm text-gray-600 mt-1">An e-commerce platform with a focus on user experience.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/A0E7A0/333333?text=Project+Gamma" alt="Project Gamma" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/969696?text=Image+Not+Found';">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-gray-800">Project Gamma</h3>
+                            <p class="text-sm text-gray-600 mt-1">A mobile app for community engagement.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="content-section rounded-lg bg-white shadow p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Contact Us</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">Have a question or want to work with us? Fill out the form below and we'll get back to you as soon as possible.</p>
+                <form id="contactForm" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" id="name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea name="message" id="message" rows="4" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <div id="formMessage" class="mt-4 text-sm"></div>
+            </section>
+
+            <footer class="mt-10 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
+                <p>Main Content Footer | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a></p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // JavaScript for mobile menu toggle and navigation
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        const currentYearSpan = document.getElementById('currentYear');
+
+        // Set current year in the sidebar footer
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        // Toggle sidebar on mobile
+        if (mobileMenuButton && sidebar) {
+            mobileMenuButton.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+        }
+
+        // Close sidebar when clicking on the main content (on mobile)
+        if (mainContent && sidebar) {
+            mainContent.addEventListener('click', () => {
+                if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 768) { // 768px is md breakpoint in Tailwind
+                     sidebar.classList.add('-translate-x-full');
+                }
+            });
+        }
+
+        // Handle navigation link clicks for SPA-like behavior
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor behavior
+
+                const targetId = this.getAttribute('href').substring(1); // Get target section ID
+
+                // Remove active class from all links and sections
+                navLinks.forEach(nav => nav.classList.remove('active-link', 'bg-gray-700', 'text-white'));
+                contentSections.forEach(section => section.classList.remove('active'));
+
+                // Add active class to the clicked link
+                this.classList.add('active-link', 'bg-gray-700', 'text-white');
+
+                // Show the target content section
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+
+                // Update URL hash without page reload (optional)
+                // history.pushState(null, null, `#${targetId}`);
+
+                // Close sidebar on mobile after navigation
+                if (window.innerWidth < 768 && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+
+                // Scroll to top of main content area
+                if (mainContent) {
+                    mainContent.scrollTop = 0; // For overflow containers
+                    // For window scroll, if mainContent is not the scroller:
+                    // window.scrollTo({ top: mainContent.offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Optional: Set initial active link based on URL hash if page is loaded with one
+        // For example, if URL is yoursite.com#about, "About" section will be active.
+        // window.addEventListener('load', () => {
+        //     const hash = window.location.hash;
+        //     if (hash) {
+        //         const activeLink = document.querySelector(`.nav-link[href="${hash}"]`);
+        //         if (activeLink) {
+        //             activeLink.click(); // Simulate click to activate section
+        //         }
+        //     } else {
+        //         // Ensure home is active if no hash
+        //         const homeLink = document.querySelector('.nav-link[href="#home"]');
+        //         if (homeLink && !homeLink.classList.contains('active-link')) {
+        //            // homeLink.click(); // This might be redundant if home is active by default HTML
+        //         }
+        //     }
+        // });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm && formMessage) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Basic validation (can be expanded)
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    formMessage.textContent = 'Please fill out all fields.';
+                    formMessage.className = 'mt-4 text-sm text-red-600';
+                    return;
+                }
+
+                // Simulate form submission
+                formMessage.textContent = 'Sending your message...';
+                formMessage.className = 'mt-4 text-sm text-blue-600';
+
+                setTimeout(() => {
+                    // Simulate success
+                    formMessage.textContent = 'Message sent successfully! We will get back to you soon.';
+                    formMessage.className = 'mt-4 text-sm text-green-600';
+                    contactForm.reset(); // Clear the form
+
+                    // Simulate error (uncomment to test error case)
+                    /*
+                    formMessage.textContent = 'An error occurred. Please try again later.';
+                    formMessage.className = 'mt-4 text-sm text-red-600';
+                    */
+                }, 2000);
+            });
+        }
+
+    </script>
+
+</body>
+</html>
